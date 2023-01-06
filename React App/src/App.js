@@ -4,7 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import "./App.css";
 // 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
+
 
 function App() {
   const webcamRef = useRef(null);
@@ -13,7 +13,6 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    // e.g. const net = await cocossd.load();
     const net = await tf.loadGraphModel('https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/best_web_model/model.json')
     
     //  Loop and detect hands
@@ -43,10 +42,9 @@ function App() {
       canvasRef.current.height = videoHeight;
 
       // 4. TODO - Make Detections
-      // e.g. const obj = await net.detect(video);
       const img = tf.browser.fromPixels(video)
-      const resized = tf.image.resizeBilinear(img, [480,640])
-      const casted = resized.cast('int32')
+      const resized = tf.image.resizeBilinear(img, [640,640])
+      const casted = resized.cast('float32')
       const expanded = casted.expandDims(0)
       const obj = await net.executeAsync(expanded)
       console.log(obj)
@@ -56,7 +54,6 @@ function App() {
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
 
       tf.dispose(img)
       tf.dispose(resized)
