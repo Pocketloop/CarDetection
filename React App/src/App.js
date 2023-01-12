@@ -13,7 +13,7 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    const net = await tf.loadGraphModel('https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/best_web_model/model.json')
+    const net = await tf.loadGraphModel('https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/web_model_tfjs/model.json')
     
     //  Loop and detect hands
     setInterval(() => {
@@ -44,7 +44,7 @@ function App() {
       // 4. TODO - Make Detections
       const img = tf.browser.fromPixels(video)
       const resized = tf.image.resizeBilinear(img, [640,640])
-      const casted = resized.cast('float32')
+      const casted = resized.cast('int32')
       const expanded = casted.expandDims(0)
       const obj = await net.executeAsync(expanded)
       console.log(obj)
