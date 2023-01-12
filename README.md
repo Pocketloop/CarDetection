@@ -1,8 +1,2 @@
 # CarDetection
-The weights of the model can be found on yolov5\runs\train\exp\weights this includes the pytorch model, as well as the tfjs converted model. I performed the training of the model on Google Colab as well as the conversion as I ran into errors while trying to convert it locally.
-
-To run the React App, go to package.json, open a new terminal and run npm install. 
-After that you can do npm start.
-There are still errors in the application so it will result to crashes.
-The model that I've pointed to is contained in another github repo (https://github.com/Pocketloop/TFJSModel/blob/main/best_web_model/model.json) and it's the raw version of that 
-I've converted another model locally (it's the same model as before trained using yolov5) the link to that model can be found here (https://github.com/Pocketloop/TFJSModel/blob/main/web_model/model.json)
+The weights of the model can be found on web_model_tfjs. The web app is working properly, however the accuracy of the model could be better. The detections were able to be logged in the browser and there should be no problem with it, however I have not implemented the 3D model, and the boxes that detect the cars. The link that I have pointed the model to be is (https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/web_model_tfjs/model.json) 
