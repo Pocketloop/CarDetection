@@ -4,7 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import "./App.css";
 // 2. TODO - Import drawing utility here
-
+import { drawRect } from "./utilities";
 
 function App() {
   const webcamRef = useRef(null);
@@ -49,11 +49,16 @@ function App() {
       const obj = await net.executeAsync(expanded)
       console.log(obj)
 
+      const boxes = await obj[1].array()
+      const classes = await obj[2].array()
+      const scores = await obj[4].array()
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
+      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)});
+
 
       tf.dispose(img)
       tf.dispose(resized)
