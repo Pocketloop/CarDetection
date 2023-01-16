@@ -13,7 +13,7 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    const net = await tf.loadGraphModel('https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/web_model_tfjs/model.json')
+    const net = await tf.loadGraphModel('https://raw.githubusercontent.com/Pocketloop/TFJSModel/main/converted/model.json')
     
     //  Loop and detect hands
     setInterval(() => {
